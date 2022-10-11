@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 50px;
+  font-family: Arial;
+  line-height: 1.5;
+}
+
+@media (max-width: 700px) {
+  body {
+    color: #fff;
+    background-color: red;
+  }
+}
+
+@import './block/title.css';
+@import './block/news.css';
