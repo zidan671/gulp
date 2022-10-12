@@ -9,6 +9,7 @@ const plumber = require('gulp-plumber')
 const notify = require('gulp-notify')
 const imagemin = require('gulp-imagemin')
 const newer = require('gulp-newer')
+const gulpif = require('gulp-if')
 
 
 // Обработка JS
@@ -21,7 +22,7 @@ const img = function () {
           }))
         }))
         .pipe(newer(path.img.dest))
-        .pipe(imagemin(app.imagemin))
+        .pipe(gulpif(app.isProd, imagemin(app.imagemin)))
         .pipe(dest(path.img.dest))
       
 }

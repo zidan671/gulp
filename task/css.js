@@ -17,7 +17,7 @@ const groupCssMediaQueris = require('gulp-group-css-media-queries')
 
 // Обработка CSS
 const css = function () {
-  return src(path.css.src, { sourcemaps: true})
+  return src(path.css.src, { sourcemaps: app.isDev})
         .pipe(plumber({
           errorHandler: notify.onError(error => ({
             title: "CSS",
@@ -29,11 +29,11 @@ const css = function () {
         .pipe(autoPrefixer())
         .pipe(groupCssMediaQueris())
         .pipe(size({ title: 'До сжатия'}))
-        .pipe(dest(path.css.dest, { sourcemaps: true}))
+        .pipe(dest(path.css.dest, { sourcemaps: app.isDev}))
         .pipe(rename({ suffix:".min"}))
         .pipe(csso())
         .pipe(size({ title: 'После сжатия'}))
-        .pipe(dest(path.css.dest, { sourcemaps: true}))
+        .pipe(dest(path.css.dest, { sourcemaps: app.isDev}))
       
 }
 

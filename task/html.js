@@ -26,6 +26,7 @@ const html = function () {
         }))
         .pipe(size({ title: 'После сжатия'}))
         .pipe(dest(path.root))
+        
       
 }
 

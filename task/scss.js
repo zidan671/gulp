@@ -17,7 +17,7 @@ const sassGlob = require('gulp-sass-glob')
 
 // Обработка SCSS
 const scss = function () {
-  return src(path.scss.src, { sourcemaps: true})
+  return src(path.scss.src, { sourcemaps: app.isDev})
         .pipe(plumber({
           errorHandler: notify.onError(error => ({
             title: "SCSS",
@@ -29,11 +29,11 @@ const scss = function () {
         .pipe(autoPrefixer())
         .pipe(groupCssMediaQueris())
         .pipe(size({ title: 'До сжатия'}))
-        .pipe(dest(path.scss.dest, { sourcemaps: true}))
+        .pipe(dest(path.scss.dest, { sourcemaps: app.isDev}))
         .pipe(rename({ suffix:".min"}))
         .pipe(csso())
         .pipe(size({ title: 'После сжатия'}))
-        .pipe(dest(path.scss.dest, { sourcemaps: true}))
+        .pipe(dest(path.scss.dest, { sourcemaps: app.isDev}))
       
 }
 
